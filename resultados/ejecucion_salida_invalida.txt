@@ -1,0 +1,23 @@
+WARNING motor: intento=1 campo=total regla=regla_de_negocio mensaje=neto + IVA no cierra con el total
+WARNING motor: intento=2 campo=total regla=regla_de_negocio mensaje=neto + IVA no cierra con el total
+{
+  "ok": false,
+  "tipo_error": "salida_invalida",
+  "mensaje": "La respuesta siguió inválida después del reintento. Cargar a mano.",
+  "campos_fallidos": [
+    {
+      "campo": "total",
+      "regla": "regla_de_negocio",
+      "mensaje": "neto + IVA no cierra con el total"
+    }
+  ],
+  "metricas": {
+    "modelo": "claude-haiku-5-5",
+    "intentos": 2,
+    "tokens_entrada": 200,
+    "tokens_salida": 100,
+    "tokens_razonamiento": 0,
+    "costo_usd": 0.00007,
+    "latencia_ms": 12
+  }
+}

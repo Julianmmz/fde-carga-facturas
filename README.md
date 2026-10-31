@@ -7,6 +7,11 @@ latencia. Implementa la HU1 (carga asistida) de la ficha de la Pre-Entrega 1.
 Un analista revisa siempre el borrador: el motor no registra nada en ningún sistema. Todos
 los datos del repositorio son ficticios.
 
+**Proveedor de esta entrega: Gemini (`gemini-3.5-flash-lite`).** Es barato (USD 0,30 / 2,50
+por millón de tokens), tiene nivel gratuito y resolvió bien las 5 consultas de medición. El
+motor no depende del proveedor: con `ANTHROPIC_API_KEY` en el `.env` pasa a usar Claude y
+Gemini queda de respaldo.
+
 ## Cómo correrlo
 
 Requiere Python 3.12. Desde la carpeta del repositorio, en PowerShell:
@@ -39,6 +44,9 @@ con precio en `src/precios.py` (por ejemplo `claude-opus-5-5`, no "Opus 5.5" ni 
 # Demostración de error: entrada fuera de contrato (no llama al modelo)
 .\.venv\Scripts\python.exe -m src.motor --caso error_entrada
 
+# Demostración del error final: falla dos veces y devuelve salida_invalida (cliente simulado, sin clave)
+.\.venv\Scripts\python.exe -m src.demo_salida_invalida
+
 # Las 5 consultas de medición; guarda resultados/medicion.json
 .\.venv\Scripts\python.exe -m src.medir
 ```
@@ -53,6 +61,7 @@ con precio en `src/precios.py` (por ejemplo `claude-opus-5-5`, no "Opus 5.5" ni 
 | `src/precios.py` | Precios publicados y cálculo del costo |
 | `src/motor.py` | Validación, llamada, un reintento y métricas |
 | `src/medir.py` | Corre las 5 consultas y arma la tabla |
+| `src/demo_salida_invalida.py` | Muestra el ciclo campo que falla → reintento → error estructurado |
 | `datos/casos.json` | Facturas ficticias y valores esperados |
 | `resultados/` | Salidas reales de terminal y `medicion.json` de la entrega (medidas con `gemini-3.5-flash-lite`) |
 
