@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "descripcion": "Factura A clara, 21%",
+    "entrada": {
+      "canal": "mail",
+      "analista": "ana.perez",
+      "texto_factura": "ORIGINAL\nELECTRO SERVICIOS DEMO S.R.L.  FACTURA A  COD. 01\nPunto de Venta: 00003  Comp. Nro: 00004521\nFecha de Emisión: 12/09/2026\nCUIT: 30-88888888-4\nPeríodo Facturado Desde: 12/09/2026 Hasta: 12/09/2026  Fecha de Vto. para el pago: 17/09/2026\nCUIT receptor: 30-99999999-5  AGRODEMO S.A.\nProducto / Servicio: REPARACIÓN DE TABLERO ELÉCTRICO EN PLANTA DE ACOPIO\nCantidad 1,00  Precio Unit. 84000,00  Alícuota IVA 21%\nImporte Neto Gravado: $ 84000,00\nIVA 21%: $ 17640,00\nImporte Total: $ 101640,00\nCAE N°: 00000000000000"
+    },
+    "esperado": {
+      "clasificacion": "factura", "cuit": "30-88888888-4", "razon_social": "ELECTRO SERVICIOS DEMO S.R.L.",
+      "tipo_comprobante": "01", "punto_venta": 3, "numero": 4521, "periodo_desde": "2026-09-12",
+      "periodo_hasta": "2026-09-12", "vencimiento": "2026-09-17", "neto": 84000, "alicuota_iva": "21",
+      "iva": 17640, "total": 101640
+    }
+  },
+  {
+    "id": 2,
+    "descripcion": "Factura C de monotributista",
+    "entrada": {
+      "canal": "mail",
+      "analista": "ana.perez",
+      "texto_factura": "ORIGINAL\nHONORARIOS DEMO CONSULTORA  FACTURA C  COD. 011\nPunto de Venta: 00001  Comp. Nro: 00000217\nCUIT: 27-77777777-2\nFecha de Emisión: 03/10/2026\nPeríodo Facturado Desde: 01/09/2026 Hasta: 30/09/2026  Fecha de Vto. para el pago: 13/10/2026\nCondición frente al IVA: Responsable Monotributo\nCUIT receptor: 30-99999999-5  AGRODEMO S.A.\nProducto / Servicio: ASESORAMIENTO IMPOSITIVO SEPTIEMBRE\nSubtotal: $ 45000,00\nImporte Otros Tributos: $ 0,00\nImporte Total: $ 45000,00\nCAE N°: 00000000000000"
+    },
+    "esperado": {
+      "clasificacion": "factura", "cuit": "27-77777777-2", "razon_social": "HONORARIOS DEMO CONSULTORA",
+      "tipo_comprobante": "11", "punto_venta": 1, "numero": 217, "periodo_desde": "2026-09-01",
+      "periodo_hasta": "2026-09-30", "vencimiento": "2026-10-13", "neto": 45000, "alicuota_iva": "0",
+      "iva": 0, "total": 45000
+    }
+  },
+  {
+    "id": 3,
+    "descripcion": "Factura A clara, 10,5%",
+    "entrada": {
+      "canal": "portal",
+      "analista": "ana.perez",
+      "texto_factura": "AGROINSUMOS DEMO S.A.\nFACTURA A - Código 01\nPto. Vta. 0012 - Nro. 00088310\nC.U.I.T. 30-66666666-2\nEmisión 05/10/2026\nPeríodo: 05/10/2026 al 05/10/2026\nVencimiento de pago: 04/11/2026\nCliente: AGRODEMO S.A. CUIT 30-99999999-5\nDetalle: SEMILLA DE PASTURA 500 KG\nNeto gravado 250.000,00\nIVA 10,5% 26.250,00\nTOTAL $ 276.250,00\nCAE 00000000000000"
+    },
+    "esperado": {
+      "clasificacion": "factura", "cuit": "30-66666666-2", "razon_social": "AGROINSUMOS DEMO S.A.",
+      "tipo_comprobante": "01", "punto_venta": 12, "numero": 88310, "periodo_desde": "2026-10-05",
+      "periodo_hasta": "2026-10-05", "vencimiento": "2026-11-04", "neto": 250000, "alicuota_iva": "10.5",
+      "iva": 26250, "total": 276250
+    }
+  },
+  {
+    "id": 4,
+    "descripcion": "Confusa: CUIT ilegible y total que no cierra",
+    "entrada": {
+      "canal": "mail",
+      "analista": "ana.perez",
+      "texto_factura": "F4CTURA ?  Nro 0 0 0 2 - 000 4?17\nTRANSP0RTES DEM0\nCUIT 30-7?111?11-1\nFecha 2?/09/2026\nFLETE ROSARIO - ACOPIO\nNeto 120.000,00\nIVA 21% 25.200,00\nTotal 154.000,00\n(escaneo borroso, falta el pie)"
+    },
+    "esperado": { "clasificacion": "dudoso" }
+  },
+  {
+    "id": 5,
+    "descripcion": "Fuera de tema: no es una factura",
+    "entrada": {
+      "canal": "mail",
+      "analista": "ana.perez",
+      "texto_factura": "Hola, ¿me pasás la receta del risotto que hiciste el viernes? Quiero prepararlo para el cumpleaños de mi hermana y no me acuerdo de las cantidades. Gracias!"
+    },
+    "esperado": { "clasificacion": "no_factura" }
+  },
+  {
+    "id": "error_cuit",
+    "descripcion": "Demostración de error: CUIT con dígito verificador incorrecto",
+    "entrada": {
+      "canal": "mail",
+      "analista": "ana.perez",
+      "texto_factura": "ORIGINAL\nELECTRO SERVICIOS DEMO S.R.L.  FACTURA A  COD. 01\nPunto de Venta: 00003  Comp. Nro: 00004522\nCUIT: 30-88888888-5\nPeríodo Facturado Desde: 20/09/2026 Hasta: 20/09/2026  Fecha de Vto. para el pago: 25/09/2026\nProducto / Servicio: REPUESTOS DE TABLERO\nImporte Neto Gravado: $ 10000,00\nIVA 21%: $ 2100,00\nImporte Total: $ 12100,00"
+    },
+    "esperado": null
+  },
+  {
+    "id": "error_entrada",
+    "descripcion": "Demostración de error: entrada que no cumple el contrato (no llama al modelo)",
+    "entrada": {
+      "canal": "whatsapp",
+      "analista": "Ana Perez",
+      "texto_factura": "Factura 123"
+    },
+    "esperado": null
+  }
+]

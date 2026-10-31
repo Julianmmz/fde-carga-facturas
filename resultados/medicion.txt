@@ -1,0 +1,22 @@
+WARNING motor: Sin ANTHROPIC_API_KEY: se usa solo el respaldo gemini-3.5-flash-lite
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+WARNING motor: intento=1 campo=cuit regla=string_pattern_mismatch mensaje=String should match pattern '^\d{2}-\d{8}-\d$'
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+| # | Consulta | ¿Validó? | Tokens (ent/sal) | Costo USD | Latencia ms |
+|---|---|---|---|---|---|
+| 1 | Factura A clara, 21% | sí | 703 / 391 | 0.001188 | 5849 |
+| 2 | Factura C de monotributista | sí | 670 / 377 | 0.001143 | 1577 |
+| 3 | Factura A clara, 10,5% | sí | 648 / 388 | 0.001164 | 1805 |
+| 4 | Confusa: CUIT ilegible y total que no cierra | sí | 1140 / 751 | 0.002220 | 3159 |
+| 5 | Fuera de tema: no es una factura | sí | 448 / 309 | 0.000907 | 1419 |
+| | Promedio | 5/5 | 722 / 443 | 0.001325 | 2762 |

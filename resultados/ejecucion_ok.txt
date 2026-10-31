@@ -1,0 +1,48 @@
+WARNING motor: Sin ANTHROPIC_API_KEY: se usa solo el respaldo gemini-3.5-flash-lite
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+{
+  "ok": true,
+  "salida": {
+    "clasificacion": "factura",
+    "cuit": "30-88888888-4",
+    "razon_social": "ELECTRO SERVICIOS DEMO S.R.L.",
+    "tipo_comprobante": "01",
+    "punto_venta": 3,
+    "numero": 4521,
+    "periodo_desde": "2026-09-12",
+    "periodo_hasta": "2026-09-12",
+    "vencimiento": "2026-09-17",
+    "producto_servicio": "REPARACIÓN DE TABLERO ELÉCTRICO EN PLANTA DE ACOPIO",
+    "neto": "84000",
+    "alicuota_iva": "21",
+    "iva": "17640",
+    "total": "101640",
+    "confianza": {
+      "cuit": 1.0,
+      "razon_social": 1.0,
+      "tipo_comprobante": 1.0,
+      "punto_venta": 1.0,
+      "numero": 1.0,
+      "periodo": 1.0,
+      "vencimiento": 1.0,
+      "producto_servicio": 1.0,
+      "neto": 1.0,
+      "alicuota_iva": 1.0,
+      "iva": 1.0,
+      "total": 1.0
+    },
+    "campos_a_revisar": [],
+    "requiere_revision_completa": false
+  },
+  "campos_fallidos": [],
+  "metricas": {
+    "modelo": "gemini-3.5-flash-lite",
+    "intentos": 1,
+    "tokens_entrada": 703,
+    "tokens_salida": 391,
+    "tokens_razonamiento": 0,
+    "costo_usd": 0.0011884,
+    "latencia_ms": 2172
+  }
+}

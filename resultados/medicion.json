@@ -1,0 +1,105 @@
+{
+  "filas": [
+    {
+      "id": 1,
+      "consulta": "Factura A clara, 21%",
+      "valido": true,
+      "clasificacion": "factura",
+      "tipo_error": null,
+      "campos_fallidos": [],
+      "modelo": "gemini-3.5-flash-lite",
+      "intentos": 1,
+      "tokens_entrada": 703,
+      "tokens_salida": 391,
+      "costo_usd": 0.0011884,
+      "latencia_ms": 5849,
+      "comparacion": {
+        "clasificacion_ok": true,
+        "campos_mal": [],
+        "no_detectados": []
+      }
+    },
+    {
+      "id": 2,
+      "consulta": "Factura C de monotributista",
+      "valido": true,
+      "clasificacion": "factura",
+      "tipo_error": null,
+      "campos_fallidos": [],
+      "modelo": "gemini-3.5-flash-lite",
+      "intentos": 1,
+      "tokens_entrada": 670,
+      "tokens_salida": 377,
+      "costo_usd": 0.0011435,
+      "latencia_ms": 1577,
+      "comparacion": {
+        "clasificacion_ok": true,
+        "campos_mal": [],
+        "no_detectados": []
+      }
+    },
+    {
+      "id": 3,
+      "consulta": "Factura A clara, 10,5%",
+      "valido": true,
+      "clasificacion": "factura",
+      "tipo_error": null,
+      "campos_fallidos": [],
+      "modelo": "gemini-3.5-flash-lite",
+      "intentos": 1,
+      "tokens_entrada": 648,
+      "tokens_salida": 388,
+      "costo_usd": 0.0011644,
+      "latencia_ms": 1805,
+      "comparacion": {
+        "clasificacion_ok": true,
+        "campos_mal": [],
+        "no_detectados": []
+      }
+    },
+    {
+      "id": 4,
+      "consulta": "Confusa: CUIT ilegible y total que no cierra",
+      "valido": true,
+      "clasificacion": "dudoso",
+      "tipo_error": null,
+      "campos_fallidos": [],
+      "modelo": "gemini-3.5-flash-lite",
+      "intentos": 2,
+      "tokens_entrada": 1140,
+      "tokens_salida": 751,
+      "costo_usd": 0.0022195,
+      "latencia_ms": 3159,
+      "comparacion": {
+        "clasificacion_ok": true,
+        "campos_mal": [],
+        "no_detectados": []
+      }
+    },
+    {
+      "id": 5,
+      "consulta": "Fuera de tema: no es una factura",
+      "valido": true,
+      "clasificacion": "no_factura",
+      "tipo_error": null,
+      "campos_fallidos": [],
+      "modelo": "gemini-3.5-flash-lite",
+      "intentos": 1,
+      "tokens_entrada": 448,
+      "tokens_salida": 309,
+      "costo_usd": 0.0009069,
+      "latencia_ms": 1419,
+      "comparacion": {
+        "clasificacion_ok": true,
+        "campos_mal": [],
+        "no_detectados": []
+      }
+    }
+  ],
+  "promedios": {
+    "tokens_entrada": 721.8,
+    "tokens_salida": 443.2,
+    "costo_usd": 0.00132454,
+    "latencia_ms": 2761.8
+  }
+}

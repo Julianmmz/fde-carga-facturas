@@ -1,0 +1,53 @@
+WARNING motor: Sin ANTHROPIC_API_KEY: se usa solo el respaldo gemini-3.5-flash-lite
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+WARNING motor: intento=1 campo=cuit regla=value_error mensaje=Value error, el dígito verificador del CUIT no coincide
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+{
+  "ok": true,
+  "salida": {
+    "clasificacion": "dudoso",
+    "motivo": "El dígito verificador del CUIT informado no coincide con el algoritmo de validación de CUIT.",
+    "razon_social": "ELECTRO SERVICIOS DEMO S.R.L.",
+    "tipo_comprobante": "01",
+    "punto_venta": 3,
+    "numero": 4522,
+    "periodo_desde": "2026-09-20",
+    "periodo_hasta": "2026-09-20",
+    "vencimiento": "2026-09-25",
+    "producto_servicio": "REPUESTOS DE TABLERO",
+    "neto": "10000",
+    "alicuota_iva": "21",
+    "iva": "2100",
+    "total": "12100",
+    "confianza": {
+      "cuit": 0.0,
+      "razon_social": 0.95,
+      "tipo_comprobante": 0.95,
+      "punto_venta": 0.95,
+      "numero": 0.95,
+      "periodo": 0.95,
+      "vencimiento": 0.95,
+      "producto_servicio": 0.95,
+      "neto": 0.95,
+      "alicuota_iva": 0.95,
+      "iva": 0.95,
+      "total": 0.95
+    },
+    "campos_a_revisar": [
+      "cuit"
+    ],
+    "requiere_revision_completa": true
+  },
+  "campos_fallidos": [],
+  "metricas": {
+    "modelo": "gemini-3.5-flash-lite",
+    "intentos": 2,
+    "tokens_entrada": 1255,
+    "tokens_salida": 777,
+    "tokens_razonamiento": 0,
+    "costo_usd": 0.002319,
+    "latencia_ms": 3658
+  }
+}

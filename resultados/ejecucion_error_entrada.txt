@@ -1,0 +1,32 @@
+WARNING motor: Sin ANTHROPIC_API_KEY: se usa solo el respaldo gemini-3.5-flash-lite
+{
+  "ok": false,
+  "tipo_error": "entrada_invalida",
+  "mensaje": "La entrada no cumple el contrato; no se llamó al modelo.",
+  "campos_fallidos": [
+    {
+      "campo": "texto_factura",
+      "regla": "string_too_short",
+      "mensaje": "String should have at least 30 characters"
+    },
+    {
+      "campo": "canal",
+      "regla": "enum",
+      "mensaje": "Input should be 'mail' or 'portal'"
+    },
+    {
+      "campo": "analista",
+      "regla": "string_pattern_mismatch",
+      "mensaje": "String should match pattern '^[a-z][a-z0-9._]{2,29}$'"
+    }
+  ],
+  "metricas": {
+    "modelo": "gemini-3.5-flash-lite",
+    "intentos": 0,
+    "tokens_entrada": 0,
+    "tokens_salida": 0,
+    "tokens_razonamiento": 0,
+    "costo_usd": 0.0,
+    "latencia_ms": 2
+  }
+}
