@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1, "tipo": "normal", "rol": "analista",
+    "pregunta": "¿Quién tiene que aprobar una factura con un importe total de $ 750.000?",
+    "documento_esperado": "matriz_autorizacion", "evidencia": "Más de $ 500.000", "esperado": "responde",
+    "respuesta_correcta": "Gerencia, porque supera $ 500.000."
+  },
+  {
+    "id": 2, "tipo": "normal", "rol": "analista",
+    "pregunta": "¿Qué es el artículo ART-4401 y a qué cuenta contable imputa?",
+    "documento_esperado": "catalogo_articulos", "evidencia": "| ART-4401 |", "esperado": "responde",
+    "respuesta_correcta": "Mantenimiento mecánico de maquinaria de planta; cuenta 5.2.10 Mantenimiento."
+  },
+  {
+    "id": 3, "tipo": "normal", "rol": "analista",
+    "pregunta": "¿Qué artículo del ERP se usa para las semillas de pastura del CUIT 30-66666666-2?",
+    "documento_esperado": "equivalencias_proveedores", "evidencia": "ART-2205", "esperado": "responde",
+    "respuesta_correcta": "ART-2205."
+  },
+  {
+    "id": 4, "tipo": "normal", "rol": "analista",
+    "pregunta": "¿Qué artículo del ERP le corresponde a TELCO DEMO S.A.?",
+    "documento_esperado": "equivalencias_proveedores", "evidencia": "ART-7105", "esperado": "responde",
+    "respuesta_correcta": "ART-7105, telefonía móvil."
+  },
+  {
+    "id": 5, "tipo": "normal", "rol": "analista",
+    "pregunta": "¿Cuándo se considera que una factura está duplicada?",
+    "documento_esperado": "procedimiento_carga", "evidencia": "el mismo punto de venta", "esperado": "responde",
+    "respuesta_correcta": "Cuando ya existe otra con el mismo CUIT, tipo de comprobante, punto de venta y número."
+  },
+  {
+    "id": 6, "tipo": "normal", "rol": "analista",
+    "pregunta": "¿Qué hay que hacer si se detecta un error después de finalizar la carga?",
+    "documento_esperado": "procedimiento_carga", "evidencia": "anula el", "esperado": "responde",
+    "respuesta_correcta": "Anular el comprobante en el ERP antes de la fecha de pago y volver a cargarla."
+  },
+  {
+    "id": 7, "tipo": "sin_respuesta", "rol": "analista",
+    "pregunta": "¿Cómo se carga una factura emitida en dólares?",
+    "documento_esperado": null, "evidencia": null, "esperado": "requiere_humano",
+    "respuesta_correcta": null
+  },
+  {
+    "id": 8, "tipo": "sin_respuesta", "rol": "analista",
+    "pregunta": "¿Cuál es el horario de atención de la mesa de ayuda de Sistemas?",
+    "documento_esperado": null, "evidencia": null, "esperado": "requiere_humano",
+    "respuesta_correcta": null
+  },
+  {
+    "id": 9, "tipo": "restringida", "rol": "analista", "rol_con_acceso": "gerencia",
+    "pregunta": "¿Cuánto presupuesto disponible le queda al área Logística este mes?",
+    "documento_esperado": "presupuesto_areas", "evidencia": "$ 1.488.000", "esperado": "requiere_humano",
+    "respuesta_correcta": "Solo Gerencia: $ 1.488.000."
+  },
+  {
+    "id": 10, "tipo": "restringida", "rol": "analista", "rol_con_acceso": "gerencia",
+    "pregunta": "¿Qué área está en alerta por haber superado el 80 % de su presupuesto?",
+    "documento_esperado": "presupuesto_areas", "evidencia": "está en alerta", "esperado": "requiere_humano",
+    "respuesta_correcta": "Solo Gerencia: Planta de acopio."
+  }
+]

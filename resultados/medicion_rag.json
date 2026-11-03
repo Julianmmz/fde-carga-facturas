@@ -1,0 +1,609 @@
+{
+  "busqueda": [
+    {
+      "config": "chico",
+      "tamano": 200,
+      "modo": "vectorial",
+      "n": 8,
+      "doc1": 7,
+      "doc3": 8,
+      "evid1": 5,
+      "evid3": 8,
+      "fugas_restringidas": 0
+    },
+    {
+      "config": "chico",
+      "tamano": 200,
+      "modo": "hibrida",
+      "n": 8,
+      "doc1": 8,
+      "doc3": 8,
+      "evid1": 6,
+      "evid3": 8,
+      "fugas_restringidas": 0
+    },
+    {
+      "config": "grande",
+      "tamano": 1000,
+      "modo": "vectorial",
+      "n": 8,
+      "doc1": 8,
+      "doc3": 8,
+      "evid1": 8,
+      "evid3": 8,
+      "fugas_restringidas": 0
+    },
+    {
+      "config": "grande",
+      "tamano": 1000,
+      "modo": "hibrida",
+      "n": 8,
+      "doc1": 8,
+      "doc3": 8,
+      "evid1": 8,
+      "evid3": 8,
+      "fugas_restringidas": 0
+    }
+  ],
+  "ganadora": "grande",
+  "detalle": [
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 1,
+      "rol": "analista",
+      "esperado": "matriz_autorizacion",
+      "top": [
+        "matriz_autorizacion#05",
+        "matriz_autorizacion#06",
+        "matriz_autorizacion#04"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 2,
+      "rol": "analista",
+      "esperado": "catalogo_articulos",
+      "top": [
+        "catalogo_articulos#04",
+        "catalogo_articulos#02",
+        "catalogo_articulos#05"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 3,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "catalogo_articulos#06",
+        "equivalencias_proveedores#06",
+        "catalogo_articulos#07"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 4,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#08",
+        "equivalencias_proveedores#09",
+        "equivalencias_proveedores#04"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 5,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#08",
+        "procedimiento_carga#09",
+        "procedimiento_carga#12"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 6,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#11",
+        "procedimiento_carga#12",
+        "procedimiento_carga#09"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 9,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#04",
+        "presupuesto_areas#03",
+        "presupuesto_areas#02"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "vectorial",
+      "id": 10,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#06",
+        "presupuesto_areas#07",
+        "presupuesto_areas#02"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 1,
+      "rol": "analista",
+      "esperado": "matriz_autorizacion",
+      "top": [
+        "matriz_autorizacion#05",
+        "matriz_autorizacion#04",
+        "matriz_autorizacion#06"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 2,
+      "rol": "analista",
+      "esperado": "catalogo_articulos",
+      "top": [
+        "catalogo_articulos#02",
+        "catalogo_articulos#10",
+        "catalogo_articulos#04"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 3,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#06",
+        "equivalencias_proveedores#05",
+        "equivalencias_proveedores#07"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 4,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#08",
+        "equivalencias_proveedores#09",
+        "equivalencias_proveedores#05"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 5,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#08",
+        "procedimiento_carga#09",
+        "procedimiento_carga#12"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 6,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#11",
+        "procedimiento_carga#12",
+        "procedimiento_carga#09"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 9,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#04",
+        "presupuesto_areas#03",
+        "presupuesto_areas#05"
+      ]
+    },
+    {
+      "config": "chico",
+      "modo": "hibrida",
+      "id": 10,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#06",
+        "presupuesto_areas#07",
+        "presupuesto_areas#03"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 1,
+      "rol": "analista",
+      "esperado": "matriz_autorizacion",
+      "top": [
+        "matriz_autorizacion#03",
+        "matriz_autorizacion#02",
+        "matriz_autorizacion#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 2,
+      "rol": "analista",
+      "esperado": "catalogo_articulos",
+      "top": [
+        "catalogo_articulos#02",
+        "catalogo_articulos#05",
+        "catalogo_articulos#06"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 3,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#03",
+        "catalogo_articulos#03",
+        "equivalencias_proveedores#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 4,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#05",
+        "equivalencias_proveedores#04",
+        "equivalencias_proveedores#03"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 5,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#05",
+        "procedimiento_carga#04",
+        "procedimiento_carga#02"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 6,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#07",
+        "procedimiento_carga#04",
+        "procedimiento_carga#05"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 9,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#02",
+        "presupuesto_areas#03",
+        "presupuesto_areas#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "vectorial",
+      "id": 10,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#03",
+        "presupuesto_areas#02",
+        "presupuesto_areas#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 1,
+      "rol": "analista",
+      "esperado": "matriz_autorizacion",
+      "top": [
+        "matriz_autorizacion#03",
+        "matriz_autorizacion#02",
+        "procedimiento_carga#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 2,
+      "rol": "analista",
+      "esperado": "catalogo_articulos",
+      "top": [
+        "catalogo_articulos#02",
+        "catalogo_articulos#05",
+        "catalogo_articulos#01"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 3,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#03",
+        "equivalencias_proveedores#04",
+        "equivalencias_proveedores#05"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 4,
+      "rol": "analista",
+      "esperado": "equivalencias_proveedores",
+      "top": [
+        "equivalencias_proveedores#05",
+        "equivalencias_proveedores#03",
+        "equivalencias_proveedores#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 5,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#05",
+        "matriz_autorizacion#05",
+        "procedimiento_carga#02"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 6,
+      "rol": "analista",
+      "esperado": "procedimiento_carga",
+      "top": [
+        "procedimiento_carga#07",
+        "procedimiento_carga#05",
+        "matriz_autorizacion#05"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 9,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#02",
+        "presupuesto_areas#03",
+        "presupuesto_areas#04"
+      ]
+    },
+    {
+      "config": "grande",
+      "modo": "hibrida",
+      "id": 10,
+      "rol": "gerencia",
+      "esperado": "presupuesto_areas",
+      "top": [
+        "presupuesto_areas#03",
+        "presupuesto_areas#04",
+        "presupuesto_areas#02"
+      ]
+    }
+  ],
+  "respuestas": [
+    {
+      "id": 1,
+      "tipo": "normal",
+      "rol": "analista",
+      "esperado": "responde",
+      "obtenido": "responde",
+      "correcto": true,
+      "respuesta": "Para una factura con un importe total de $ 750.000, la autorización debe ser realizada por la Gerencia.",
+      "motivo": null,
+      "fuentes": [
+        "matriz_autorizacion#03"
+      ],
+      "intentos": 1,
+      "tokens_entrada": 812,
+      "tokens_salida": 85,
+      "costo_usd": 0.0004561,
+      "latencia_ms": 2165
+    },
+    {
+      "id": 2,
+      "tipo": "normal",
+      "rol": "analista",
+      "esperado": "responde",
+      "obtenido": "responde",
+      "correcto": true,
+      "respuesta": "El artículo ART-4401 corresponde al mantenimiento mecánico de maquinaria de planta e imputa a la cuenta contable 5.2.10 Mantenimiento.",
+      "motivo": null,
+      "fuentes": [
+        "catalogo_articulos#02"
+      ],
+      "intentos": 1,
+      "tokens_entrada": 764,
+      "tokens_salida": 73,
+      "costo_usd": 0.0004117,
+      "latencia_ms": 1404
+    },
+    {
+      "id": 3,
+      "tipo": "normal",
+      "rol": "analista",
+      "esperado": "responde",
+      "obtenido": "responde",
+      "correcto": true,
+      "respuesta": "El artículo del ERP que se usa para las semillas de pastura del CUIT 30-66666666-2 es ART-2205.",
+      "motivo": null,
+      "fuentes": [
+        "equivalencias_proveedores#03"
+      ],
+      "intentos": 1,
+      "tokens_entrada": 806,
+      "tokens_salida": 76,
+      "costo_usd": 0.0004318,
+      "latencia_ms": 1082
+    },
+    {
+      "id": 4,
+      "tipo": "normal",
+      "rol": "analista",
+      "esperado": "responde",
+      "obtenido": "responde",
+      "correcto": true,
+      "respuesta": "El artículo del ERP que le corresponde a TELCO DEMO S.A. para su factura de telefonía móvil corporativa es el ART-7105.",
+      "motivo": null,
+      "fuentes": [
+        "equivalencias_proveedores#05"
+      ],
+      "intentos": 1,
+      "tokens_entrada": 836,
+      "tokens_salida": 94,
+      "costo_usd": 0.0004858,
+      "latencia_ms": 909
+    },
+    {
+      "id": 5,
+      "tipo": "normal",
+      "rol": "analista",
+      "esperado": "responde",
+      "obtenido": "responde",
+      "correcto": true,
+      "respuesta": "Una factura se considera duplicada cuando ya existe en el ERP otra con el mismo CUIT del emisor, tipo de comprobante, punto de venta y número.",
+      "motivo": null,
+      "fuentes": [
+        "procedimiento_carga#05"
+      ],
+      "intentos": 1,
+      "tokens_entrada": 754,
+      "tokens_salida": 93,
+      "costo_usd": 0.0004587,
+      "latencia_ms": 995
+    },
+    {
+      "id": 6,
+      "tipo": "normal",
+      "rol": "analista",
+      "esperado": "responde",
+      "obtenido": "responde",
+      "correcto": true,
+      "respuesta": "Si se detecta un error después de finalizar la carga, el analista debe anular el comprobante en el ERP antes de la fecha de pago y volver a cargar la factura con los datos correctos.",
+      "motivo": null,
+      "fuentes": [
+        "procedimiento_carga#07"
+      ],
+      "intentos": 1,
+      "tokens_entrada": 759,
+      "tokens_salida": 99,
+      "costo_usd": 0.0004752,
+      "latencia_ms": 1082
+    },
+    {
+      "id": 7,
+      "tipo": "sin_respuesta",
+      "rol": "analista",
+      "esperado": "requiere_humano",
+      "obtenido": "requiere_humano",
+      "correcto": true,
+      "respuesta": null,
+      "motivo": "Los fragmentos proporcionados no contienen información sobre cómo se debe cargar una factura emitida en dólares.",
+      "fuentes": [],
+      "intentos": 1,
+      "tokens_entrada": 769,
+      "tokens_salida": 44,
+      "costo_usd": 0.0003407,
+      "latencia_ms": 64003
+    },
+    {
+      "id": 8,
+      "tipo": "sin_respuesta",
+      "rol": "analista",
+      "esperado": "requiere_humano",
+      "obtenido": "requiere_humano",
+      "correcto": true,
+      "respuesta": null,
+      "motivo": "Los fragmentos recuperados no contienen información sobre el horario de atención de la mesa de ayuda de Sistemas.",
+      "fuentes": [],
+      "intentos": 1,
+      "tokens_entrada": 811,
+      "tokens_salida": 46,
+      "costo_usd": 0.0003583,
+      "latencia_ms": 1558
+    },
+    {
+      "id": 9,
+      "tipo": "restringida",
+      "rol": "analista",
+      "esperado": "requiere_humano",
+      "obtenido": "requiere_humano",
+      "correcto": true,
+      "respuesta": null,
+      "motivo": "Los fragmentos proporcionados no contienen información sobre el presupuesto disponible del área de Logística.",
+      "fuentes": [],
+      "intentos": 1,
+      "tokens_entrada": 767,
+      "tokens_salida": 53,
+      "costo_usd": 0.0003626,
+      "latencia_ms": 1122
+    },
+    {
+      "id": 10,
+      "tipo": "restringida",
+      "rol": "analista",
+      "esperado": "requiere_humano",
+      "obtenido": "requiere_humano",
+      "correcto": true,
+      "respuesta": null,
+      "motivo": "Los fragmentos recuperados no contienen información sobre presupuestos ni sobre qué área superó el 80% del mismo.",
+      "fuentes": [],
+      "intentos": 1,
+      "tokens_entrada": 658,
+      "tokens_salida": 50,
+      "costo_usd": 0.0003224,
+      "latencia_ms": 915
+    }
+  ]
+}

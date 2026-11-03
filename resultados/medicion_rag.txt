@@ -1,0 +1,27 @@
+WARNING motor: Sin ANTHROPIC_API_KEY: se usa solo el respaldo gemini-3.5-flash-lite
+WARNING rag: límite de embeddings; espero 60s (intento 1)
+| Fragmentado | Modo | Documento top-1 | Documento top-3 | Evidencia top-1 | Evidencia top-3 | Fugas restringidas |
+|---|---|---|---|---|---|---|
+| chico (200 car.) | vectorial | 7/8 | 8/8 | 5/8 | 8/8 | 0/2 |
+| chico (200 car.) | hibrida | 8/8 | 8/8 | 6/8 | 8/8 | 0/2 |
+| grande (1000 car.) | vectorial | 8/8 | 8/8 | 8/8 | 8/8 | 0/2 |
+| grande (1000 car.) | hibrida | 8/8 | 8/8 | 8/8 | 8/8 | 0/2 |
+
+Ganadora: grande
+
+Respuestas con la configuración grande:
+
+| # | Tipo | Esperado | Obtenido | Fuentes |
+|---|---|---|---|---|
+| 1 | normal | responde | responde (ok) | matriz_autorizacion#03 |
+| 2 | normal | responde | responde (ok) | catalogo_articulos#02 |
+| 3 | normal | responde | responde (ok) | equivalencias_proveedores#03 |
+| 4 | normal | responde | responde (ok) | equivalencias_proveedores#05 |
+| 5 | normal | responde | responde (ok) | procedimiento_carga#05 |
+| 6 | normal | responde | responde (ok) | procedimiento_carga#07 |
+| 7 | sin_respuesta | requiere_humano | requiere_humano (ok) | - |
+| 8 | sin_respuesta | requiere_humano | requiere_humano (ok) | - |
+| 9 | restringida | requiere_humano | requiere_humano (ok) | - |
+| 10 | restringida | requiere_humano | requiere_humano (ok) | - |
+
+Comportamiento correcto: 10/10

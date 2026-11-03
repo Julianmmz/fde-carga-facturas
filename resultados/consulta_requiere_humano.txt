@@ -1,0 +1,31 @@
+WARNING motor: Sin ANTHROPIC_API_KEY: se usa solo el respaldo gemini-3.5-flash-lite
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents "HTTP/1.1 200 OK"
+INFO google_genai.models: AFC is enabled with max remote calls: 10.
+INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+{
+  "ok": true,
+  "salida": {
+    "requiere_humano": true,
+    "motivo": "El proveedor TRANSPORTES DEMO no tiene equivalencia cargada porque factura fletes y no está definido si son de insumos o de granos.",
+    "citas": [
+      "equivalencias_proveedores#06"
+    ]
+  },
+  "fuentes": [
+    {
+      "documento": "equivalencias_proveedores",
+      "seccion": "Proveedores sin equivalencia cargada",
+      "fragmento_id": "equivalencias_proveedores#06"
+    }
+  ],
+  "campos_fallidos": [],
+  "metricas": {
+    "modelo": "gemini-3.5-flash-lite",
+    "intentos": 1,
+    "tokens_entrada": 748,
+    "tokens_salida": 63,
+    "tokens_razonamiento": 0,
+    "costo_usd": 0.0003819,
+    "latencia_ms": 4756
+  }
+}

@@ -1,0 +1,22 @@
+Colección facturas_chico, usuario analista, top-3
+
+Consulta: ¿Qué es el artículo ART-4401?   (acierta si el 1.º contiene ART-4401)
+  vectorial FALLA   ['catalogo_articulos#04', 'catalogo_articulos#02', 'catalogo_articulos#05']  1.º: | ART-4411 | Materiales y repuestos eléctricos | 5.2.11 Repuestos | Pl
+  palabras  ACIERTA ['equivalencias_proveedores#05', 'catalogo_articulos#02', 'equivalencias_proveedores#02']  1.º: | 30-44444444-0 | METALÚRGICA DEMO S.A. | Mantenimiento de norias y se
+  hibrida   ACIERTA ['catalogo_articulos#02', 'equivalencias_proveedores#05', 'equivalencias_proveedores#04']  1.º: | ART-4401 | Mantenimiento mecánico de maquinaria de planta | 5.2.10 M
+
+Consulta: ¿A qué cuenta imputa el artículo ART-6102?   (acierta si el 1.º contiene ART-6102)
+  vectorial FALLA   ['catalogo_articulos#10', 'catalogo_articulos#09', 'catalogo_articulos#12']  1.º: | ART-6120 | Honorarios de asesoramiento impositivo y contable | 5.4.0
+  palabras  ACIERTA ['catalogo_articulos#09', 'catalogo_articulos#01', 'equivalencias_proveedores#02']  1.º: | ART-6102 | Honorarios legales | 5.4.02 Honorarios | Administración |
+  hibrida   ACIERTA ['catalogo_articulos#09', 'equivalencias_proveedores#07', 'catalogo_articulos#01']  1.º: | ART-6102 | Honorarios legales | 5.4.02 Honorarios | Administración |
+
+Consulta: ¿Qué artículo se usa para el CUIT 30-66666666-2?   (acierta si el 1.º contiene 30-66666666-2)
+  vectorial FALLA   ['equivalencias_proveedores#04', 'equivalencias_proveedores#07', 'equivalencias_proveedores#09']  1.º: | 30-88888888-4 | ELECTRO SERVICIOS DEMO S.R.L. | Venta de repuestos e
+  palabras  ACIERTA ['equivalencias_proveedores#06', 'equivalencias_proveedores#02', 'equivalencias_proveedores#01']  1.º: | 30-66666666-2 | AGROINSUMOS DEMO S.A. | Fertilizantes | ART-2310 |
+  hibrida   ACIERTA ['equivalencias_proveedores#06', 'equivalencias_proveedores#04', 'equivalencias_proveedores#07']  1.º: | 30-66666666-2 | AGROINSUMOS DEMO S.A. | Fertilizantes | ART-2310 |
+
+Consulta: ¿Qué factura el proveedor con CUIT 30-44444444-0?   (acierta si el 1.º contiene 30-44444444-0)
+  vectorial FALLA   ['equivalencias_proveedores#04', 'equivalencias_proveedores#05', 'equivalencias_proveedores#03']  1.º: | 30-88888888-4 | ELECTRO SERVICIOS DEMO S.R.L. | Venta de repuestos e
+  palabras  ACIERTA ['equivalencias_proveedores#05', 'equivalencias_proveedores#06', 'equivalencias_proveedores#08']  1.º: | 30-44444444-0 | METALÚRGICA DEMO S.A. | Mantenimiento de norias y se
+  hibrida   ACIERTA ['equivalencias_proveedores#05', 'equivalencias_proveedores#04', 'equivalencias_proveedores#06']  1.º: | 30-44444444-0 | METALÚRGICA DEMO S.A. | Mantenimiento de norias y se
+

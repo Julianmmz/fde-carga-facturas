@@ -1,0 +1,30 @@
+
+== facturas_chico: 56 fragmentos (tamaño 200, solapamiento 40) ==
+  catalogo_articulos            15 fragmentos  6 secciones  roles=['analista', 'gerencia']
+  equivalencias_proveedores     10 fragmentos  6 secciones  roles=['analista', 'gerencia']
+  matriz_autorizacion           11 fragmentos  6 secciones  roles=['analista', 'gerencia']
+  presupuesto_areas              8 fragmentos  4 secciones  roles=['gerencia']
+  procedimiento_carga           12 fragmentos  7 secciones  roles=['analista', 'gerencia']
+
+== facturas_grande: 29 fragmentos (tamaño 1000, solapamiento 150) ==
+  catalogo_articulos             6 fragmentos  6 secciones  roles=['analista', 'gerencia']
+  equivalencias_proveedores      6 fragmentos  6 secciones  roles=['analista', 'gerencia']
+  matriz_autorizacion            6 fragmentos  6 secciones  roles=['analista', 'gerencia']
+  presupuesto_areas              4 fragmentos  4 secciones  roles=['gerencia']
+  procedimiento_carga            7 fragmentos  7 secciones  roles=['analista', 'gerencia']
+
+Ejemplo de fragmento:
+{
+  "id": "presupuesto_areas#02",
+  "metadatos": {
+    "roles": [
+      "gerencia"
+    ],
+    "documento": "presupuesto_areas",
+    "titulo": "Presupuesto mensual por área y consumo",
+    "config": "grande",
+    "orden": 2,
+    "seccion": "Consumo por área"
+  },
+  "texto": "| Área | Presupuesto mensual | Consumido al 02/11/2026 | Disponible | % consumido |\n| Planta de acopio | $ 9.000.000 | $ 7.380.000 | $ 1.620.000 | 82 % |\n| Producción | $ 14.500.000 | $ 6.090.000 | $ 8.410.000 | 42 % |\n| Logística | $ 6.200.000 | $ 4.712.000 | $ 1.488.000 | 76 % |\n| Administración | $ 3.100.000 | $ 1.240.000 | $ 1.860.000 | 40 % |"
+}

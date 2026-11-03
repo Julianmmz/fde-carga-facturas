@@ -1,0 +1,31 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\jmuñoz\FDE-curso\fde-carga-facturas\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\jmuñoz\FDE-curso\fde-carga-facturas
+plugins: anyio-4.15.1
+collecting ... collected 22 items
+
+tests/test_rag.py::test_cada_fragmento_lleva_documento_seccion_y_roles PASSED [  4%]
+tests/test_rag.py::test_un_documento_sin_roles_no_se_ingesta PASSED      [  9%]
+tests/test_rag.py::test_limpieza_saca_comentarios_y_separadores_de_tabla PASSED [ 13%]
+tests/test_rag.py::test_fragmento_chico_repite_el_encabezado_de_la_tabla PASSED [ 18%]
+tests/test_rag.py::test_ninguna_configuracion_supera_su_tamano PASSED    [ 22%]
+tests/test_rag.py::test_analista_no_recibe_nada_del_presupuesto[hibrida] PASSED [ 27%]
+tests/test_rag.py::test_analista_no_recibe_nada_del_presupuesto[vectorial] PASSED [ 31%]
+tests/test_rag.py::test_analista_no_recibe_nada_del_presupuesto[palabras] PASSED [ 36%]
+tests/test_rag.py::test_gerencia_si_recibe_el_presupuesto PASSED         [ 40%]
+tests/test_rag.py::test_el_filtro_por_rol_va_en_cada_consulta_a_la_base[analista] PASSED [ 45%]
+tests/test_rag.py::test_el_filtro_por_rol_va_en_cada_consulta_a_la_base[gerencia] PASSED [ 50%]
+tests/test_rag.py::test_analista_no_ve_el_presupuesto_ni_en_el_prompt PASSED [ 54%]
+tests/test_rag.py::test_gerencia_ve_el_presupuesto_en_el_prompt PASSED   [ 59%]
+tests/test_rag.py::test_respuesta_cita_el_documento_de_origen PASSED     [ 63%]
+tests/test_rag.py::test_cita_a_un_fragmento_no_recuperado_falla_en_citas_y_reintenta PASSED [ 68%]
+tests/test_rag.py::test_sin_fragmentos_requiere_humano_sin_llamar_al_modelo PASSED [ 72%]
+tests/test_rag.py::test_responder_recibe_la_entrada_de_la_pe2_y_devuelve_salida_y_fuentes PASSED [ 77%]
+tests/test_rag.py::test_un_articulo_que_no_esta_en_lo_citado_es_invalido PASSED [ 81%]
+tests/test_rag.py::test_los_ids_se_sacan_del_texto_pero_no_los_codigos PASSED [ 86%]
+tests/test_rag.py::test_tokenizar_conserva_los_codigos_y_sus_partes PASSED [ 90%]
+tests/test_rag.py::test_archivo_de_preguntas PASSED                      [ 95%]
+tests/test_rag.py::test_respuesta_con_un_codigo_que_no_esta_en_lo_citado_es_invalida PASSED [100%]
+
+============================= 22 passed in 3.67s ==============================
