@@ -134,6 +134,22 @@ def test_reglas_de_salida_informan_el_campo(cambio, campo):
     assert campo in {e["loc"][0] for e in exc.value.errors()}
 
 
+@pytest.mark.parametrize(
+    "error, campo",
+    [
+        ({"cuit": "30-88888888-5"}, "cuit"),  # dígito verificador incorrecto
+        ({"total": 110000}, "total"),  # neto + IVA no cierra
+        ({"iva": 8820, "total": 92820}, "iva"),  # cierra el total, pero no es el 21 % del neto
+    ],
+)
+def test_confianza_alta_no_salva_un_dato_incorrecto(error, campo):
+    """El modelo puede estar seguro y equivocado: la confianza no reemplaza la validación local."""
+    segura = FACTURA | error | {"confianza": dict.fromkeys(CONFIANZA, 1.0)}
+    r = procesar_factura(ENTRADA, ClienteFalso(segura, segura))
+    assert not r.ok and r.tipo_error is TipoError.SALIDA_INVALIDA
+    assert campo in [f.campo for f in r.campos_fallidos]
+
+
 def test_factura_c_no_discrimina_iva():
     datos = FACTURA | {"tipo_comprobante": "11", "alicuota_iva": "0", "iva": 17640}
     with pytest.raises(ValidationError):
