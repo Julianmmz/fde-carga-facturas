@@ -12,9 +12,10 @@ import os
 import sys
 import time
 from pathlib import Path
+from typing import TypeVar
 
 from dotenv import load_dotenv
-from pydantic import ValidationError
+from pydantic import BaseModel, ValidationError
 
 from src.contratos import CampoFallido, Entrada, Metricas, Resultado, Salida, TipoError
 from src.precios import PRECIOS_USD_POR_MILLON, calcular_costo_usd
@@ -25,6 +26,7 @@ from src.proveedores import (
     ClienteGemini,
     ClienteLLM,
     ErrorProveedor,
+    RespuestaLLM,
 )
 
 MODELO_ANTHROPIC = "claude-opus-5-5"
@@ -33,6 +35,7 @@ MAX_REINTENTOS = 1
 CASOS = Path(__file__).resolve().parent.parent / "datos" / "casos.json"
 
 log = logging.getLogger("motor")
+M = TypeVar("M", bound=BaseModel)
 
 
 def _campos_fallidos(exc: ValidationError) -> list[CampoFallido]:
@@ -47,57 +50,74 @@ def _campos_fallidos(exc: ValidationError) -> list[CampoFallido]:
     ]
 
 
-def procesar_factura(datos: dict, cliente: ClienteLLM) -> Resultado:
-    inicio = time.perf_counter()
-    entrada_tok = salida_tok = razonamiento_tok = intentos = 0
-    costo_usd = 0.0
-    modelo_usado = cliente.modelo
+class Medidor:
+    """Acumula intentos, tokens y costo de todas las llamadas de una misma operación."""
 
-    def metricas() -> Metricas:
-        return Metricas(
-            modelo=modelo_usado,
-            intentos=intentos,
-            tokens_entrada=entrada_tok,
-            tokens_salida=salida_tok,
-            tokens_razonamiento=razonamiento_tok,
-            costo_usd=round(costo_usd, 8),
-            latencia_ms=round((time.perf_counter() - inicio) * 1000),
-        )
+    def __init__(self, modelo: str):
+        self.modelo = modelo
+        self.intentos = self.tokens_entrada = self.tokens_salida = self.tokens_razonamiento = 0
+        self.costo_usd = 0.0
+        self._inicio = time.perf_counter()
 
-    try:
-        entrada = Entrada.model_validate(datos)
-    except ValidationError as exc:
-        return Resultado(
-            ok=False,
-            tipo_error=TipoError.ENTRADA_INVALIDA,
-            mensaje="La entrada no cumple el contrato; no se llamó al modelo.",
-            campos_fallidos=_campos_fallidos(exc),
-            metricas=metricas(),
-        )
-
-    mensaje = PLANTILLA_USUARIO.format(canal=entrada.canal.value, texto_factura=entrada.texto_factura)
-    esquema = Salida.model_json_schema()
-
-    for intento in range(1, MAX_REINTENTOS + 2):
-        intentos = intento
-        try:
-            respuesta = cliente.generar(PROMPT_SISTEMA, mensaje, esquema)
-        except ErrorProveedor as exc:
-            log.error("intento=%d error_proveedor=%s", intento, exc.tipo.value)
-            return Resultado(ok=False, tipo_error=exc.tipo, mensaje=exc.mensaje, metricas=metricas())
-
+    def sumar(self, respuesta: RespuestaLLM) -> None:
         # El reintento también consume tokens: se acumulan los de todos los intentos.
-        entrada_tok += respuesta.tokens_entrada
-        salida_tok += respuesta.tokens_salida
-        razonamiento_tok += respuesta.tokens_razonamiento
+        self.tokens_entrada += respuesta.tokens_entrada
+        self.tokens_salida += respuesta.tokens_salida
+        self.tokens_razonamiento += respuesta.tokens_razonamiento
         # Con respaldo, cada intento puede venir de un modelo con otro precio.
-        modelo_usado = respuesta.modelo
-        costo_usd += calcular_costo_usd(
+        self.modelo = respuesta.modelo
+        self.costo_usd += calcular_costo_usd(
             respuesta.modelo, respuesta.tokens_entrada, respuesta.tokens_salida,
             respuesta.tokens_razonamiento,
         )
+
+    def metricas(self) -> Metricas:
+        return Metricas(
+            modelo=self.modelo,
+            intentos=self.intentos,
+            tokens_entrada=self.tokens_entrada,
+            tokens_salida=self.tokens_salida,
+            tokens_razonamiento=self.tokens_razonamiento,
+            costo_usd=round(self.costo_usd, 8),
+            latencia_ms=round((time.perf_counter() - self._inicio) * 1000),
+        )
+
+
+class FalloLLM(Exception):
+    """La llamada no dio una respuesta válida: error del proveedor o salida inválida tras reintentar."""
+
+    def __init__(self, tipo: TipoError, mensaje: str, campos_fallidos: list[CampoFallido] | None = None):
+        super().__init__(mensaje)
+        self.tipo = tipo
+        self.mensaje = mensaje
+        self.campos_fallidos = campos_fallidos or []
+
+
+def generar_validado(
+    cliente: ClienteLLM,
+    sistema: str,
+    mensaje: str,
+    modelo: type[M],
+    medidor: Medidor,
+    plantilla_reintento: str = PLANTILLA_REINTENTO,
+    contexto: dict | None = None,
+) -> M:
+    """Llama al modelo y valida contra `modelo`. Si no valida, reintenta una vez avisando qué falló.
+
+    `contexto` llega a los validadores de Pydantic: así el RAG chequea que las citas sean de
+    fragmentos que de verdad se recuperaron.
+    """
+    esquema = modelo.model_json_schema()
+    for intento in range(1, MAX_REINTENTOS + 2):
+        medidor.intentos += 1
         try:
-            salida = Salida.model_validate_json(respuesta.texto)
+            respuesta = cliente.generar(sistema, mensaje, esquema)
+        except ErrorProveedor as exc:
+            log.error("intento=%d error_proveedor=%s", intento, exc.tipo.value)
+            raise FalloLLM(exc.tipo, exc.mensaje) from exc
+        medidor.sumar(respuesta)
+        try:
+            return modelo.model_validate_json(respuesta.texto, context=contexto)
         except ValidationError as exc:
             fallidos = _campos_fallidos(exc)
             for fallo in fallidos:
@@ -107,17 +127,43 @@ def procesar_factura(datos: dict, cliente: ClienteLLM) -> Resultado:
                 )
             if intento <= MAX_REINTENTOS:
                 detalle = "\n".join(f"- {f.campo}: {f.mensaje}" for f in fallidos)
-                mensaje += PLANTILLA_REINTENTO.format(errores=detalle)
+                mensaje += plantilla_reintento.format(errores=detalle)
                 continue
-            return Resultado(
-                ok=False,
-                tipo_error=TipoError.SALIDA_INVALIDA,
-                mensaje="La respuesta siguió inválida después del reintento. Cargar a mano.",
-                campos_fallidos=fallidos,
-                metricas=metricas(),
-            )
-        return Resultado(ok=True, salida=salida, metricas=metricas())
-    raise AssertionError("el ciclo de intentos siempre devuelve un resultado")
+            raise FalloLLM(
+                TipoError.SALIDA_INVALIDA,
+                "La respuesta siguió inválida después del reintento.",
+                fallidos,
+            ) from exc
+    raise AssertionError("el ciclo de intentos siempre devuelve o falla")
+
+
+def procesar_factura(datos: dict, cliente: ClienteLLM) -> Resultado:
+    medidor = Medidor(cliente.modelo)
+    try:
+        entrada = Entrada.model_validate(datos)
+    except ValidationError as exc:
+        return Resultado(
+            ok=False,
+            tipo_error=TipoError.ENTRADA_INVALIDA,
+            mensaje="La entrada no cumple el contrato; no se llamó al modelo.",
+            campos_fallidos=_campos_fallidos(exc),
+            metricas=medidor.metricas(),
+        )
+
+    mensaje = PLANTILLA_USUARIO.format(canal=entrada.canal.value, texto_factura=entrada.texto_factura)
+    try:
+        salida = generar_validado(cliente, PROMPT_SISTEMA, mensaje, Salida, medidor)
+    except FalloLLM as fallo:
+        if fallo.tipo is TipoError.SALIDA_INVALIDA:
+            fallo.mensaje += " Cargar a mano."
+        return Resultado(
+            ok=False,
+            tipo_error=fallo.tipo,
+            mensaje=fallo.mensaje,
+            campos_fallidos=fallo.campos_fallidos,
+            metricas=medidor.metricas(),
+        )
+    return Resultado(ok=True, salida=salida, metricas=medidor.metricas())
 
 
 def crear_cliente() -> ClienteLLM | Resultado:
